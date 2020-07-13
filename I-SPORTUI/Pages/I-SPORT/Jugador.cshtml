@@ -1,0 +1,56 @@
+﻿@page
+@model I_SPORTUI.Pages.I_SPORT.JugadorModel
+@{
+    ViewData["Title"] = "Jugador";
+} <h1>Registrar Jugador</h1>
+<form class="container-fluid">
+    <form class="row">
+        <label>Nombre</label>
+        <input id="Nombre" class="form-control" type="text" placeholder="Nombre del jugador" />
+        <label>Fecha de nacimiento</label>
+        <input type="date" id="fechanac" class="form-control" name="">
+        <label>Estatura</label>
+        <input id="Estatura" class="form-control" type="text" placeholder="Estatura en metros" />
+        <label>Fotografia</label>
+        <input id="Fotografia" type="file" />
+        <div>
+            <label>Posicion</label>
+            <select id="Posicion">
+                <option>Posicion</option>
+                <option>Portero</option>
+                <option>Defensa Central</option>
+                <option>Defensa Lateral</option>
+                <option>Defensa libre</option>
+                <option>Medio Campo</option>
+                <option>Medio Campo Central</option>
+                <option>Medio Campo Central</option>
+                <option>Medio Campo Ofensivo</option>
+                <option>Medio Centro Ofensivo</option>
+                <option>Segundo Delantero</option>
+                <option>Delantero Inferior</option>
+                <option>Delantero Central</option>
+            </select>
+            <div>
+                <label>Nacionalidad</label>
+                <select id="Nacionalidad">
+                    <option>País</option>
+                    <option>México</option>
+                    <option>Péru</option>
+                    <option>Alemania</option>
+                    <option>China</option>
+                    <option>Japón</option>
+                    <option>Noruega</option>
+                    <option>India</option>
+                    <option>Marruecos</option>
+                    <option>Estados Unidos</option>
+                    <option>Brazil</option>
+                </select>
+            </div>
+        </div>
+
+
+    </form>
+    <button class=" align-content-center btn btn-primary">Registrar</button>
+</form>
+
+
