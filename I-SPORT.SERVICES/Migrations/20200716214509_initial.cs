@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace I_SPORT.SERVICES.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,9 +13,9 @@ namespace I_SPORT.SERVICES.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAT = table.Column<DateTime>(nullable: false),
+                    CreatedAT = table.Column<DateTime>(nullable: true),
                     UpdatedAT = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<bool>(nullable: false),
+                    Status = table.Column<bool>(nullable: true),
                     Nombre = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -29,9 +29,9 @@ namespace I_SPORT.SERVICES.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAT = table.Column<DateTime>(nullable: false),
+                    CreatedAT = table.Column<DateTime>(nullable: true),
                     UpdatedAT = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<bool>(nullable: false),
+                    Status = table.Column<bool>(nullable: true),
                     UserName = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true)
                 },
@@ -46,14 +46,15 @@ namespace I_SPORT.SERVICES.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAT = table.Column<DateTime>(nullable: false),
+                    CreatedAT = table.Column<DateTime>(nullable: true),
                     UpdatedAT = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<bool>(nullable: false),
+                    Status = table.Column<bool>(nullable: true),
                     Nombre = table.Column<string>(nullable: true),
                     Fechanac = table.Column<DateTime>(nullable: false),
                     Estatura = table.Column<double>(nullable: false),
                     Pais = table.Column<string>(nullable: true),
                     posicion = table.Column<string>(nullable: true),
+                    Foto = table.Column<string>(nullable: true),
                     EquipoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -73,9 +74,9 @@ namespace I_SPORT.SERVICES.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAT = table.Column<DateTime>(nullable: false),
+                    CreatedAT = table.Column<DateTime>(nullable: true),
                     UpdatedAT = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<bool>(nullable: false),
+                    Status = table.Column<bool>(nullable: true),
                     Fechapartido = table.Column<DateTime>(nullable: false),
                     Equipolocal = table.Column<int>(nullable: false),
                     Equipovisitante = table.Column<int>(nullable: false),
@@ -98,9 +99,9 @@ namespace I_SPORT.SERVICES.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAT = table.Column<DateTime>(nullable: false),
+                    CreatedAT = table.Column<DateTime>(nullable: true),
                     UpdatedAT = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<bool>(nullable: false),
+                    Status = table.Column<bool>(nullable: true),
                     Goles = table.Column<int>(nullable: false),
                     Autogoles = table.Column<int>(nullable: false),
                     TRojas = table.Column<int>(nullable: false),

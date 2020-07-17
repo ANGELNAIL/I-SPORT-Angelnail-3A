@@ -275,3 +275,4 @@ C:\Users\Angel Nail\source\repos\I-SPORT\I-SPORTUI\obj\Debug\netcoreapp3.1\I-SPO
 C:\Users\Angel Nail\source\repos\I-SPORT\I-SPORTUI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Angel Nail\source\repos\I-SPORT\I-SPORTUI\obj\Debug\netcoreapp3.1\I-SPORTUI.csproj.CoreCompileInputs.cache
 C:\Users\Angel Nail\source\repos\I-SPORT\I-SPORTUI\obj\Debug\netcoreapp3.1\I-SPORTUI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Angel Nail\source\repos\I-SPORT\I-SPORTUI\obj\Debug\netcoreapp3.1\Razor\Pages\I-SPORT\Agregarequipo.cshtml.g.cs

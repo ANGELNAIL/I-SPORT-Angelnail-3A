@@ -4,14 +4,16 @@ using I_SPORT.SERVICES;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace I_SPORT.SERVICES.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200716214509_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,9 +39,6 @@ namespace I_SPORT.SERVICES.Migrations
 
                     b.Property<DateTime?>("UpdatedAT")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("logo")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

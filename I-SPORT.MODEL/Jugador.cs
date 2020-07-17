@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
 
 namespace I_SPORT.MODEL
 {
@@ -18,6 +19,8 @@ namespace I_SPORT.MODEL
         public string Pais { get; set; }
         [Display(Name = "Posicion")]
         public string posicion { get; set; }
+        [Display(Name = "Foto")]
+        public string Foto { get; set; }
         //asociaciones
         public int EquipoId { get; set; }          
         public Equipo Equipo { get; set; }

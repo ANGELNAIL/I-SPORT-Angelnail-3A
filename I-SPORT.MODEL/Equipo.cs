@@ -11,5 +11,7 @@ namespace I_SPORT.MODEL
     {
         [Display(Name ="Nombre equipo")]
         public string Nombre { get; set; }
+        [Display(Name = "Logo")]
+        public string logo { get; set; }
     }
 }

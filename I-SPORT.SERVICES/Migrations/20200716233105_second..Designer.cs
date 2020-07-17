@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace I_SPORT.SERVICES.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20200713214047_initialmigration")]
-    partial class initialmigration
+    [Migration("20200716233105_second.")]
+    partial class second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,9 @@ namespace I_SPORT.SERVICES.Migrations
 
                     b.Property<DateTime?>("UpdatedAT")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("logo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -110,6 +113,9 @@ namespace I_SPORT.SERVICES.Migrations
 
                     b.Property<DateTime>("Fechanac")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Foto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
