@@ -36,14 +36,10 @@ $(this).next('.custom-file-label').html(fileName);
                 </div>
             </div>
             <div>
-                <label>Equipo</label>
-                <select asp-for="Jugador.EquipoId">
-                    <option> seleccione su equipo </option>
-                    <option>
-                        select * from jugador.equipos
-                    </option>
-                </select>
-
+                <label asp-for="Jugador.EquipoId">Equipo</label>
+                <select asp-for="equipo.Id" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
+                    <option> seleccione su equipo </option>                    
+                </select>             
             </div>
             <div>
                 <label>Nacionalidad</label>

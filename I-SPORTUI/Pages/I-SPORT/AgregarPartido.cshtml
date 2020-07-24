@@ -1,0 +1,35 @@
+﻿@page
+@model I_SPORTUI.Pages.I_SPORT.AgregarPartidoModel
+@{
+}
+
+<h1></h1>
+<body>
+    <div>
+        <form class="container-fluid" method="post" enctype="multipart/form-data">
+            <div>
+                <label>Fecha</label>
+                <input asp-for="partido.Fechapartido" type="date" class="form-control">
+            </div>
+            <div>
+                <label asp-for="equipo.Id">Equipo Local</label>
+                <select asp-for="equipo.Id" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
+                    <option> Seleccione Equipo Local </option>
+                </select>
+            </div>
+            <div>
+                <label asp-for="equipo.Id">Equipo Visitante</label>
+                <select asp-for="equipo.Id" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
+                    <option> Seleccione Equipo Visitante </option>
+                </select>
+            </div>
+            <div class="d-flex justify-content-end p-2">
+                <button class="btn btn-primary" type="submit" value="">Registrar</button>
+                <button class="btn btn-warning" asp-page="/I-SPORT/AgregarPartido">Cancelar</button>
+            </div>
+            <div>
+                <label></label>
+            </div>
+        </form>
+    </div>    
+</body>
