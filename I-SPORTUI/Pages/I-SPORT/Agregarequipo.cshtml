@@ -3,17 +3,6 @@
 @{
     ViewData["Title"] = "Agregarequipo";
 }
-@section Scripts{
-    <script>
-        $(document).ready(function () {
-            $('.custom-file-input').on("change", function () {
-                var fileName = $(this).val().split("\\").pop();
-                $(this).next('.custom-file-label').html(fileName);
-            });
-        });
-    </script>
-}
-
 <h1>Agregarequipo</h1>
 <body>
     <div>
@@ -24,14 +13,24 @@
             </div>
             <div class=" custom-file">
                 <input type="file" asp-for="Logo" class="custom-file-input form-control" lang="es">
-                <label class="custom-file-label" for="Logo">Choose file</label>
+                <label class="custom-file-label" for="Logo">Elige tu foto</label>
                 <input hidden asp-for="Equipo.logo" />
             </div>
             <div class="d-flex justify-content-end p-2">
-                <button type="submit" value="">Registrar</button>
+                <button class="btn btn-primary m-2" role="button">Guardar</button>
                 <a asp-page="/I-SPORT/Jugador" class="btn btn-secondary m-2" role="button">Cancelar</a>
+                <div class="text-danger" asp-validation-summary="All"></div>
             </div>
         </form>
     </div>
 </body>
-
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+}

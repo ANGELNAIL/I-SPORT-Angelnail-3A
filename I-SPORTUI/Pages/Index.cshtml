@@ -8,15 +8,18 @@
 <link href="C:\Users\Angel Nail\source\repos\I-SPORTUI\I-SPORTUI\resurce\css\bootstrap.css" rel="stylesheet" />
 <script src="C:\Users\Angel Nail\source\repos\I-SPORTUI\I-SPORTUI\resurce\js\bootstrap.js"></script>
 
-<form class="container-fluid">
+<form class="container-fluid" method="post" enctype="multipart/form-data">
     <div class="row">
         <label>Usuario</label>
-        <input id="Usuario" class="form-control" type="text" placeholder="Usuario" />
+        <input asp-for="user.UserName" class="form-control" type="text" placeholder="Usuario" />
         <label>Contraseña </label>
-        <input id="Contraseña" class="form-control" type="password" placeholder="Contraseña" />
+        <input asp-for="user.Password" class="form-control" type="password" placeholder="Contraseña" />      
     </div>
     <br />
-    <input id="Button1 " class="btn btn-primary"  type="button" value="Iniciar sesion" />
+    <div class="d-flex justify-content-end p-2">
+        <button type="submit" value="">1</button>
+        <button type="submit" value="">Registrar</button>
+    </div>
 </form>    
 
     

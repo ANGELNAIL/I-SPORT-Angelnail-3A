@@ -19,3 +19,15 @@ C:\Users\Angel Nail\source\repos\I-SPORT\I-SPORT.MODEL\bin\Debug\netcoreapp3.1\I
 C:\Users\Angel Nail\source\repos\I-SPORT\I-SPORT.MODEL\bin\Debug\netcoreapp3.1\I-SPORT.MODEL.runtimeconfig.dev.json
 C:\Users\Angel Nail\source\repos\I-SPORT\I-SPORT.MODEL\obj\Debug\netcoreapp3.1\I-SPORT.MODEL.genruntimeconfig.cache
 C:\Users\Angel Nail\source\repos\I-SPORT\I-SPORT.MODEL\obj\Debug\netcoreapp3.1\I-SPORT.MODEL.csproj.CoreCompileInputs.cache
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\bin\Debug\netcoreapp3.1\I-SPORT.MODEL.deps.json
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\bin\Debug\netcoreapp3.1\I-SPORT.MODEL.runtimeconfig.json
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\bin\Debug\netcoreapp3.1\I-SPORT.MODEL.runtimeconfig.dev.json
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\bin\Debug\netcoreapp3.1\I-SPORT.MODEL.dll
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\bin\Debug\netcoreapp3.1\I-SPORT.MODEL.pdb
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\obj\Debug\netcoreapp3.1\I-SPORT.MODEL.csprojAssemblyReference.cache
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\obj\Debug\netcoreapp3.1\I-SPORT.MODEL.AssemblyInfoInputs.cache
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\obj\Debug\netcoreapp3.1\I-SPORT.MODEL.AssemblyInfo.cs
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\obj\Debug\netcoreapp3.1\I-SPORT.MODEL.csproj.CoreCompileInputs.cache
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\obj\Debug\netcoreapp3.1\I-SPORT.MODEL.dll
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\obj\Debug\netcoreapp3.1\I-SPORT.MODEL.pdb
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORT.MODEL\obj\Debug\netcoreapp3.1\I-SPORT.MODEL.genruntimeconfig.cache

@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace I_SPORTUI.Pages.I_SPORT
 {
@@ -18,36 +19,40 @@ namespace I_SPORTUI.Pages.I_SPORT
     {
         [BindProperty]
         public Equipo Equipo { get; set; }
+        public IRepository<Equipo> Repository { get; }
         public IFormFile Logo { get; set; }
         public IWebHostEnvironment HostEnvironment { get; }
-        private readonly IRepository<Equipo> repository;
+
         public AgregarequipoModel(IRepository<Equipo> repository, IWebHostEnvironment hostEnvironment)
         {
-            this.repository = repository;
+            Repository = repository;
             HostEnvironment = hostEnvironment;
         }
         public IActionResult OnPost(Equipo equipo)
         {
             if (!ModelState.IsValid)
                 return Page();
+
             if (Logo != null)
             {
                 if (!string.IsNullOrEmpty(equipo.logo))
                 {
-                    var filePath = Path.Combine(HostEnvironment.WebRootPath, "images",
-                    equipo.logo);
+                    var filePath = Path.Combine(HostEnvironment.WebRootPath, "images", equipo.logo);
                     System.IO.File.Delete(filePath);
                 }
                 equipo.logo = ProcessUploadFile();
             }
-            var id = repository.Insert(Equipo);
-            return RedirectToPage($"/I-SPORT/Index");        
-    }
+            var id = Repository.Insert(equipo);
+
+            return RedirectToPage($"/Index");
+        }
+
         private string ProcessUploadFile()
         {
             if (Logo == null)
                 return string.Empty;
-            var uploadFolder = Path.Combine(HostEnvironment.WebRootPath, "images");//AQUI SE AGREGA LA RUTA DE IMAGEN
+
+            var uploadFolder = Path.Combine(HostEnvironment.WebRootPath, "images");
             var fileName = $"{Guid.NewGuid()}_{Logo.FileName}";
             var filePath = Path.Combine(uploadFolder, fileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
@@ -57,11 +62,6 @@ namespace I_SPORTUI.Pages.I_SPORT
             return fileName;
         }
 
-
-            public void OnGet()
-            {
-
-            } 
-    
+       
     }
 }
