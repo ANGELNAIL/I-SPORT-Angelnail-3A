@@ -436,3 +436,5 @@ C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreap
 C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreapp3.1\I-SPORTUI.genruntimeconfig.cache
 C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreapp3.1\Razor\Pages\I-SPORT\AgregarPartido.cshtml.g.cs
 C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreapp3.1\Razor\Pages\I-SPORT\Editarjugador.cshtml.g.cs
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreapp3.1\Razor\Pages\I-SPORT\Verequipos.cshtml.g.cs
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreapp3.1\Razor\Pages\I-SPORT\Verpartido.cshtml.g.cs

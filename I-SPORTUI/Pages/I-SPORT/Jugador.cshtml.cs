@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 namespace I_SPORTUI.Pages.I_SPORT
 {
@@ -22,6 +23,7 @@ namespace I_SPORTUI.Pages.I_SPORT
         [BindProperty]
         public Jugador Jugador { get; set; }
         public Equipo equipo { get; set; }
+        [BindProperty]
         public IFormFile Foto { get; set; }    
         public IWebHostEnvironment HostEnvironment { get; }
         private readonly IRepository<Jugador> repository;
@@ -34,18 +36,38 @@ namespace I_SPORTUI.Pages.I_SPORT
             this.Listaequipo = erepository.GetAll();
 
         }
-        public IActionResult OnPost()
+        public IActionResult OnPost(Equipo equipo)
         {
             if (!ModelState.IsValid)
                 return Page();
+
+            if (Foto != null)
+            {
+                if (!string.IsNullOrEmpty(Jugador.Foto))
+                {
+                    var filePath = Path.Combine(HostEnvironment.WebRootPath, "images", Jugador.Foto);
+                    System.IO.File.Delete(filePath);
+                }
+                Jugador.Foto = ProcessUploadFile();
+            }
             var id = repository.Insert(Jugador);
-            return RedirectToPage("/I-SPORT/Index");
 
+            return RedirectToPage($"/I-SPORT/Verequipos");
         }
-        public void OnGet()
+
+        private string ProcessUploadFile()
         {
+            if (Foto == null)
+                return string.Empty;
 
+            var uploadFolder = Path.Combine(HostEnvironment.WebRootPath, "images");
+            var fileName = $"{Guid.NewGuid()}_{Foto.FileName}";
+            var filePath = Path.Combine(uploadFolder, fileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                Foto.CopyTo(stream);
+            }
+            return fileName;
         }
-
     }
 }

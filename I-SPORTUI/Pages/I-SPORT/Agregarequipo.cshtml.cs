@@ -20,6 +20,7 @@ namespace I_SPORTUI.Pages.I_SPORT
         [BindProperty]
         public Equipo Equipo { get; set; }
         public IRepository<Equipo> Repository { get; }
+        [BindProperty]
         public IFormFile Logo { get; set; }
         public IWebHostEnvironment HostEnvironment { get; }
 
@@ -44,7 +45,7 @@ namespace I_SPORTUI.Pages.I_SPORT
             }
             var id = Repository.Insert(equipo);
 
-            return RedirectToPage($"/Index");
+            return RedirectToPage($"/I-SPORT/Verequipos");
         }
 
         private string ProcessUploadFile()

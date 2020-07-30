@@ -5,41 +5,33 @@
 }
 
 <h1>Ficha de jugador</h1>
-<form class="form-inline my-2 my-lg-0 ">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
-<div class="card mb-3"  style="max-width: 540px;">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="imagenes/futbol.jpg" class="card-img" alt="...">
-            <img src="C:\Users\Angel Nail\source\repos\I-SPORTUI\I-SPORT.MODEL\imagenes\futbol.jpg" class="rounded float-left" alt="...">
-            <img src="" />
-        </div>
-        <div class="col-md-12">
+<div class="card-deck">
+    @foreach (var item in Model.jugadores)
+    {
+        var imgPath = $"~/images/{(string.IsNullOrEmpty(item.Foto) ? "nonWorkshops.jpg" : item.Foto)}";
+        <div class="card bg-light m-3" style="min-width:18rem; max-width:30.5%">
+            <div class="card-header">
+                <h4 class="text-center">Nombre: @item.Nombre</h4>
+            </div>
+            <img class="card-img-top img-thumbnail imgThumbnail" src="@Url.Content(@imgPath)" alt="@item.Foto" asp-append-version="true">
             <div class="card-body">
-                <h5 class="card-title">Ficha</h5>
-                <table style="width:100%;">
-                    <tr>
-                    <td>Id</td>
-                    <td>Nombre col</td>
-                    <td>info</td>                    
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Miguel Perez</td>
-                        <td>hjkdsfkj</td>
-                        <td>
-                            <button class="btn-danger">Eliminar</button>
-                        <td>
-                            <button class="btn-success">Editar</button>
-                        <td>
-                            <button class="btn-primary">Estadisticas</button>
-                        </td>
-                    </tr>
-                   
-                </table>
+                <div><label>Estatura: @item.Estatura M</label></div>
+                <div><label>Fecha de nacimiento: @item.Fechanac.ToShortDateString()</label></div>
+                <div><label>Nacionalidad: @item.Pais</label></div>
+                <div><label>Posicion: @item.posicion</label></div>
+                <div><label>Identificador: @item.Id</label></div>
+                @foreach (var itm in Model.equipos)
+                {@if (item.EquipoId == itm.Id)
+                    {
+                        <div><label>Equipo: @itm.Nombre</label></div>
+                }
+                }
+            </div>
+            <div class="card-footer text-center">
+                <a href="#" class="btn btn-primary m-1">Edit</a>
+                <a href="#" class="btn btn-danger m-1">Delete</a>
+                <a asp-page="/Containers/Details" asp-route-Id="@item.Nombre" class="btn btn-info m-1">View</a>
             </div>
         </div>
-    </div>
+    }
 </div>

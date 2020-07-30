@@ -24,7 +24,6 @@ namespace I_SPORTUI.Pages.I_SPORT
             this.repository = repository;
             HostEnvironment = hostEnvironment;
             this.Listaequipo = Erepository.GetAll();
-
         }
         public IActionResult OnPost()
         {
@@ -32,7 +31,6 @@ namespace I_SPORTUI.Pages.I_SPORT
                 return Page();
             var id = repository.Insert(partido);         
             return RedirectToPage("/I-SPORT/Index");
-
         }
         public void OnGet()
         {

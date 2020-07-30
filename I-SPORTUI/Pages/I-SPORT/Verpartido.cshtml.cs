@@ -2,29 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using I_SPORT.MODEL;
-using I_SPORT.SERVICES;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using I_SPORT.MODEL;
+using I_SPORT.SERVICES;
 
 namespace I_SPORTUI.Pages.I_SPORT
 {
-    public class Ficha_jugadorModel : PageModel
+    public class VerpartidoModel : PageModel
     {
-        private readonly IRepository<Jugador> repository;
+        private readonly IRepository<Partido> repository;
         private readonly IRepository<Equipo> erepository;
-        public IEnumerable<Jugador> jugadores {get; set; }
+        public IEnumerable<Partido> partidos { get; set; }
         public IEnumerable<Equipo> equipos { get; set; }
-        public Jugador jugador { get; private set; }
-        public Equipo equipo { get; private set; }
-        public Ficha_jugadorModel(IRepository<Jugador> repository, IRepository<Equipo>erepository)
+        public Partido Partidos { get; private set; }
+
+        public VerpartidoModel(IRepository<Partido> repository, IRepository<Equipo> erepository)
         {
             this.repository = repository;
             this.erepository = erepository;
         }
         public IActionResult OnGet(int Id)
         {
-            jugadores = repository.GetAll();
+            partidos = repository.GetAll();
             equipos = erepository.GetAll();
             return Page();
         }

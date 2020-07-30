@@ -13,13 +13,13 @@
             </div>
             <div>
                 <label asp-for="equipo.Id">Equipo Local</label>
-                <select asp-for="equipo.Id" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
+                <select asp-for="partido.Equipolocal" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
                     <option> Seleccione Equipo Local </option>
                 </select>
             </div>
             <div>
                 <label asp-for="equipo.Id">Equipo Visitante</label>
-                <select asp-for="equipo.Id" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
+                <select asp-for="partido.Equipovisitante" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
                     <option> Seleccione Equipo Visitante </option>
                 </select>
             </div>

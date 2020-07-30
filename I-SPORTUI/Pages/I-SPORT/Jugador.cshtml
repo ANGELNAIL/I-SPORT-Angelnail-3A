@@ -13,6 +13,7 @@ $(this).next('.custom-file-label').html(fileName);
 });
     </script>
 }
+
 <h1>Registrar Jugador</h1>
 <body>
     <div class="Jugador">
@@ -32,12 +33,13 @@ $(this).next('.custom-file-label').html(fileName);
             <div>
                 <div class=" custom-file">
                     <input type="file" asp-for="Foto" class="custom-file-input form-control" lang="es">
-                    <label class="custom-file-label" for="Logo">Choose file</label>
+                    <label class="custom-file-label" for="Foto">Choose file</label>
+                    <input hidden asp-for="Jugador.Foto" />
                 </div>
             </div>
             <div>
-                <label asp-for="Jugador.EquipoId">Equipo</label>
-                <select asp-for="equipo.Id" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
+                <label asp-for="equipo.Id">Equipo</label>
+                <select asp-for="Jugador.EquipoId" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
                     <option> seleccione su equipo </option>                    
                 </select>             
             </div>
@@ -47,21 +49,20 @@ $(this).next('.custom-file-label').html(fileName);
             </div>
             <div>
                 <label>Posicion</label>
-
-                <select asp-for="Jugador.posicion" id="Posicion">
+                <select asp-for="Jugador.posicion" >
                     <option>Posicion</option>
-                    <option>Portero</option>
-                    <option>Defensa Central</option>
-                    <option>Defensa Lateral</option>
-                    <option>Defensa libre</option>
-                    <option>Medio Campo</option>
-                    <option>Medio Campo Central</option>
-                    <option>Medio Campo Central</option>
-                    <option>Medio Campo Ofensivo</option>
-                    <option>Medio Centro Ofensivo</option>
-                    <option>Segundo Delantero</option>
-                    <option>Delantero Inferior</option>
-                    <option>Delantero Central</option>
+                    <option value="Portero">Portero</option>
+                    <option value="Defensa Central">Defensa Central</option>
+                    <option value="Defensa Central">Defensa Central</option>
+                    <option value="Defensa libre">Defensa libre</option>
+                    <option value="Medio Campo">Medio Campo</option>
+                    <option value="Medio Campo Central">Medio Campo Central</option>
+                    <option value="Medio Campo Central">Medio Campo Central</option>
+                    <option value="Medio Campo Ofensivo">Medio Campo Ofensivo</option>
+                    <option value="Medio Centro Ofensivo">Medio Centro Ofensivo</option>
+                    <option value="Segundo Delantero">Segundo Delantero</option>
+                    <option value="Delantero Inferior">Delantero Inferior</option>
+                    <option value="Delantero Central">Delantero Central</option>
                 </select>
             </div>
             <div class="d-flex justify-content-end p-2">
