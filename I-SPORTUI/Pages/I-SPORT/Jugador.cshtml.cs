@@ -27,14 +27,13 @@ namespace I_SPORTUI.Pages.I_SPORT
         public IFormFile Foto { get; set; }    
         public IWebHostEnvironment HostEnvironment { get; }
         private readonly IRepository<Jugador> repository;
-        private readonly IRepository<Equipo> erepository;
+        private readonly IRepository<Equipo> erepository;    
         public IEnumerable<Equipo> Listaequipo { get; set; }
         public JugadorModel(IRepository<Jugador> repository, IRepository<Equipo> erepository, IWebHostEnvironment hostEnvironment)
         {
             this.repository = repository;
             HostEnvironment = hostEnvironment;
-            this.Listaequipo = erepository.GetAll();
-
+            this.Listaequipo = erepository.GetAll();            
         }
         public IActionResult OnPost(Equipo equipo)
         {
