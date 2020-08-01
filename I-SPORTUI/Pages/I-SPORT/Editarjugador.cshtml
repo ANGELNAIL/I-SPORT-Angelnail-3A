@@ -6,3 +6,9 @@
 
 <h1>Editarjugador</h1>
 
+<div class="form-group">
+    <label asp-for="jugador.Id"></label>
+    <select asp-for="jugador.Id" asp-items="Model.jugadores" class="custom-select mr-sm-2">
+        <option value="">Please Select...</option>
+    </select>
+</div>

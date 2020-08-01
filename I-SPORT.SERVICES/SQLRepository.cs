@@ -18,7 +18,7 @@ namespace I_SPORT.SERVICES
         }
         public SQLRepository()
         {
-        }
+        }        
         public void Delete(T obj)
         {
             if (obj == null) throw new ArgumentNullException("Entity");
