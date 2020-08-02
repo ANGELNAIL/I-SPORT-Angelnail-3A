@@ -6,6 +6,7 @@
 
 <h1>Ficha de jugador</h1>
 <div class="card-deck">
+
     @foreach (var item in Model.jugadores)
     {
         var imgPath = $"~/images/{(string.IsNullOrEmpty(item.Foto) ? "image.jpg" : item.Foto)}";
@@ -19,18 +20,15 @@
                 <div><label>Fecha de nacimiento: @item.Fechanac.ToShortDateString()</label></div>
                 <div><label>Nacionalidad: @item.Pais</label></div>
                 <div><label>Posicion: @item.posicion</label></div>
-                <div><label>Identificador: @item.Id</label></div>
                 @foreach (var itm in Model.equipos)
                 {@if (item.EquipoId == itm.Id)
                     {
                         <div><label>Equipo: @itm.Nombre</label></div>
-                }
-                }
+                    }
+            }
             </div>
             <div class="card-footer text-center">
-                <a href="#" class="btn btn-primary m-1">Edit</a>
-                <a href="#" class="btn btn-danger m-1">Delete</a>
-                <a asp-page="/Containers/Editarjugador" asp-route-Id="@Model.jugador.Id" class="btn btn-info m-1">Editar</a>
+                <a asp-page="/I-SPORT/Editarjugador" asp-route-Id="@item.Id" class="btn btn-info m-1">Editar</a>
             </div>
         </div>
     }

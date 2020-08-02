@@ -13,27 +13,26 @@ $(this).next('.custom-file-label').html(fileName);
 });
     </script>
 }
-
 <h1>Registrar Jugador</h1>
 <body>
-    <div class="Jugador">
+    <div class="card-deck">
         <form class="container-fluid" method="post" enctype="multipart/form-data">          
             <div>
                 <label>Nombre</label>
-                <input asp-for="Jugador.Nombre" id="Nombre" class="form-control" type="text" placeholder="Nombre del jugador" />
+                <input asp-for="Jugador.Nombre" id="Nombre"  type="text" placeholder="Nombre del jugador" />
             </div>
             <div>
                 <label>Fecha de nacimiento</label>
-                <input asp-for="Jugador.Fechanac" type="date" id="fechanac" class="form-control">
+                <input asp-for="Jugador.Fechanac" type="date" id="fechanac">
             </div>
             <div>
                 <label>Estatura</label>
-                <input asp-for="Jugador.Estatura" id="Estatura" class="form-control" type="text" placeholder="Estatura en metros" />
+                <input asp-for="Jugador.Estatura" id="Estatura"  type="text" placeholder="Estatura en metros" />
             </div>
             <div>
                 <div class=" custom-file">
-                    <input type="file" asp-for="Foto" class="custom-file-input form-control" lang="es">
-                    <label class="custom-file-label" for="Foto">Choose file</label>
+                    <input type="file" asp-for="Foto" class="file-input" lang="es">
+                    <label class="custom-file-label" for="Logo">Elige tu foto</label>
                     <input hidden asp-for="Jugador.Foto" />
                 </div>
             </div>

@@ -13,13 +13,10 @@
                 <h4 class="text-center">@item.Nombre</h4>
             </div>
             <img class="card-img-top img-thumbnail imgThumbnail" src="@Url.Content(@imgPath)" alt="@item.logo" asp-append-version="true">
-            <div class="card-body">
-                <h5 class="card-title" dis>Identificador: @item.Id</h5>               
+            <div class="card-body">                         
             </div>
-            <div class="card-footer text-center">
-                <a href="#" class="btn btn-primary m-1">Edit</a>
-                <a href="#" class="btn btn-danger m-1">Delete</a>
-                <a asp-page="/Containers/Details" asp-route-Id="@item.Nombre" class="btn btn-info m-1">View</a>
+            <div class="card-footer text-center">                
+                <a asp-page="/I-SPORT/Editarequipo" asp-route-Id="@item.Id" class="btn btn-info m-1">Editar</a>
             </div>
         </div>
     }

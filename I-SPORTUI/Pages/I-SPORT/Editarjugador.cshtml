@@ -3,12 +3,79 @@
 @{
     ViewData["Title"] = "Editarjugador";
 }
-
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+}
 <h1>Editarjugador</h1>
-
-<div class="form-group">
-    <label asp-for="jugador.Id"></label>
-    <select asp-for="jugador.Id" asp-items="Model.jugadores" class="custom-select mr-sm-2">
-        <option value="">Please Select...</option>
-    </select>
-</div>
+<body>
+    <div class="Jugador">
+        <form class="container-fluid" method="post" enctype="multipart/form-data">
+            <div>
+                <label>Nombre</label>
+                <input asp-for="jugador.Nombre" id="Nombre" class="form-control" type="text" placeholder="Nombre del jugador" />
+            </div>
+            <div>
+                <label>Fecha de nacimiento</label>
+                <input asp-for="jugador.Fechanac" type="date" id="fechanac" class="form-control">
+            </div>
+            <div>
+                <label>Estatura</label>
+                <input asp-for="jugador.Estatura" id="Estatura" class="form-control" type="text" placeholder="Estatura en metros" />
+            </div>
+            <div>
+                <div class=" custom-file">
+                    <input type="file" asp-for="Foto" class="custom-file-input form-control" lang="es">
+                    <label class="custom-file-label" for="Foto">Choose file</label>
+                    <input hidden asp-for="jugador.Foto" />
+                </div>
+            </div>
+            <div>
+                <label asp-for="equipo.Id">Equipo</label>
+                <select asp-for="jugador.EquipoId" asp-items="@(new SelectList(Model.Listaequipo, "Id", "Nombre"))">
+                    <option> seleccione su equipo </option>
+                </select>
+            </div>
+            <div>
+                <label>Nacionalidad</label>
+                <input asp-for="jugador.Pais" id="Pais" type="text" placeholder="Ingrese su pais" />
+            </div>
+            <div>
+                <label>Posicion</label>
+                <select asp-for="jugador.posicion">
+                    <option>Posicion</option>
+                    <option value="Portero">Portero</option>
+                    <option value="Defensa Central">Defensa Central</option>
+                    <option value="Defensa Central">Defensa Central</option>
+                    <option value="Defensa libre">Defensa libre</option>
+                    <option value="Medio Campo">Medio Campo</option>
+                    <option value="Medio Campo Central">Medio Campo Central</option>
+                    <option value="Medio Campo Central">Medio Campo Central</option>
+                    <option value="Medio Campo Ofensivo">Medio Campo Ofensivo</option>
+                    <option value="Medio Centro Ofensivo">Medio Centro Ofensivo</option>
+                    <option value="Segundo Delantero">Segundo Delantero</option>
+                    <option value="Delantero Inferior">Delantero Inferior</option>
+                    <option value="Delantero Central">Delantero Central</option>
+                </select>
+            </div>
+            <div>
+                <label asp-for="jugador.Id" hidden>ID</label>
+                <input asp-for="jugador.Id" id="txb_idJugador" hidden class="form-control" type="text" placeholder="Estatura en metros" />
+            </div>
+            <div class="d-flex justify-content-end p-2">
+                <button type="submit" name="button" value="Editar">Editar</button>
+                <button type="submit" name="button" value="Eliminar">Eliminar</button>
+                <a asp-page="/I-SPORT/Jugador" class="btn btn-secondary m-2" role="button">Cancelar</a>
+            </div>
+            <div class="modal-dialog modal-dialog-centered">
+                Esta seguro que desea realizar los cambios?
+            </div>
+        </form>
+    </div>
+</body>

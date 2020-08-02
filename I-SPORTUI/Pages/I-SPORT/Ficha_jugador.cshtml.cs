@@ -11,10 +11,11 @@ namespace I_SPORTUI.Pages.I_SPORT
 {
     public class Ficha_jugadorModel : PageModel
     {
+        
         private readonly IRepository<Jugador> repository;
         private readonly IRepository<Equipo> erepository;
         public IEnumerable<Jugador> jugadores {get; set; }
-        public IEnumerable<Equipo> equipos { get; set; }
+        public IEnumerable<Equipo> equipos { get; set; }        
         public Jugador jugador { get; private set; }
         public Equipo equipo { get; private set; }
         public Ficha_jugadorModel(IRepository<Jugador> repository, IRepository<Equipo>erepository)
@@ -22,11 +23,20 @@ namespace I_SPORTUI.Pages.I_SPORT
             this.repository = repository;
             this.erepository = erepository;
         }
+        public IActionResult OnPost(Jugador jugador)
+        {
+            if (!ModelState.IsValid)
+                return Page();
+
+            repository.Delete(jugador);
+
+            return RedirectToPage($"/I-SPORT/Ficha_jugador");
+        }
         public IActionResult OnGet(int Id)
         {
             jugadores = repository.GetAll();
             equipos = erepository.GetAll();
             return Page();
-        }
+        }       
     }
 }

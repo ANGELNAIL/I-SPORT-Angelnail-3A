@@ -18,7 +18,7 @@ namespace I_SPORT.SERVICES
         }
         public SQLRepository()
         {
-        }        
+        }
         public void Delete(T obj)
         {
             if (obj == null) throw new ArgumentNullException("Entity");
@@ -26,7 +26,7 @@ namespace I_SPORT.SERVICES
             obj.UpdatedAT = DateTime.Now;
             obj.Status = false;
             var entity = entities.Attach(obj);
-            entity.State = EntityState.Modified;
+            entity.State = EntityState.Deleted;
             context.SaveChanges();
         }
         public T Get(int id)
@@ -51,6 +51,6 @@ namespace I_SPORT.SERVICES
             var entity = entities.Attach(obj);
             entity.State = EntityState.Modified;
             context.SaveChanges();
-        }
+        }    
     }
 }
