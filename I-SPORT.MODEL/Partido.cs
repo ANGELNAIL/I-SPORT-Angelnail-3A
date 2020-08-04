@@ -10,8 +10,7 @@ namespace I_SPORT.MODEL
     {     
    
         [Display(Name = "Fecha de partido")]
-        public DateTime Fechapartido { get; set; }       
-     
+        public DateTime Fechapartido { get; set; }           
         //Asociaciones 
         [Display(Name = "Equipo local")]
         public int Equipolocal { get; set; }

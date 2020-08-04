@@ -1,0 +1,50 @@
+﻿@page
+@model I_SPORTUI.Pages.I_SPORT.AgregarestadisticaModel
+@{
+    ViewData["Title"] = "Agregarestadistica";
+}
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form method="post" enctype="multipart/form-data">
+                    <h1>Registrar Estadística</h1>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="jugador.Id">Equipo</label>
+                        <select class="form-control" asp-for="estadisticas.idjugador" asp-items="@(new SelectList(Model.Listajugador, "Id","Nombre"))">
+                            <option> seleccione jugador </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label asp-for="estadisticas.Goles">Goles metidos</label>
+                        <input class="form-control" asp-for="estadisticas.Goles" type="number" placeholder="Goles">
+                    </div>
+                    <div>
+                        <label asp-for="estadisticas.Autogoles">Autoles Metidos</label>
+                        <input class="form-control" asp-for="estadisticas.Autogoles" type="number" placeholder="Autogoles">
+                    </div>
+                    <div>
+                        <label asp-for="estadisticas.TRojas">Tarjetas Rojas</label>
+                        <input class="form-control" asp-for="estadisticas.TRojas" type="number" placeholder="Tarjetas Rojas">
+                    </div>
+                    <div>
+                        <label asp-for="estadisticas.TAmarillas">Tarjetas Amarillas</label>
+                        <input class="form-control" asp-for="estadisticas.TAmarillas" type="number" placeholder="Tarjetas Amarillas">
+                    </div>
+                    <div>
+                        <label asp-for="estadisticas.Tjugado">Tiempo Jugado</label>
+                        <input class="form-control" asp-for="estadisticas.Tjugado" type="number" placeholder="Tiempo Jugado">
+                    </div>
+                    <div class="d-flex justify-content-start p-2">
+                        <button class="btn btn-success m-2" type="submit" value="">Registrar</button>
+                        <a asp-page="/I-SPORT/Verestadistica" class="btn btn-secondary m-2" role="button">Cancelar</a>
+                        <div class="text-danger" asp-validation-summary="All"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</body>

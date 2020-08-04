@@ -5,71 +5,85 @@
 }
 @section Scripts{
     <script>
-$(document).ready(function () {
-$('.custom-file-input').on("change", function () {
-var fileName = $(this).val().split("\\").pop();
-$(this).next('.custom-file-label').html(fileName);
-});
-});
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
     </script>
 }
-<h1>Registrar Jugador</h1>
 <body>
-    <div class="card-deck">
-        <form class="container-fluid" method="post" enctype="multipart/form-data">          
-            <div>
-                <label>Nombre</label>
-                <input asp-for="Jugador.Nombre" id="Nombre"  type="text" placeholder="Nombre del jugador" />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form method="post" enctype="multipart/form-data">
+                    <h1>Registrar Jugador</h1>
+                    <br />
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input class="form-control" asp-for="Jugador.Nombre" id="Nombre" type="text" placeholder="Nombre del jugador" />
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de nacimiento</label>
+                        <input class="form-control" asp-for="Jugador.Fechanac" type="date" id="fechanac">
+                    </div>
+                    <div class="form-group">
+                        <label>Estatura</label>
+                        <input class="form-control" asp-for="Jugador.Estatura" id="Estatura" type="text" placeholder="Estatura en metros" />
+                    </div>
+                    <div class="form-group">
+                        <div class=" custom-file">
+                            <input class="form-control" type="file" asp-for="Foto" class="custom-file-input form-control" lang="es">
+                            <label class="custom-file-label" for="Logo">Elige tu foto</label>
+                            <input hidden asp-for="Jugador.Foto" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="equipo.Id">Equipo</label>
+                        <select class="form-control" asp-for="Jugador.EquipoId" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
+                            <option> seleccione su equipo </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="pais.Id">Pais</label>
+                        <select class="form-control" asp-for="Jugador.Pais" asp-items="@(new SelectList(Model.Listapaises, "Id","pais"))">
+                            <option> seleccione su equipo </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Posicion</label>
+                        <select  class="form-control"asp-for="Jugador.posicion">
+                            <option>Posicion</option>
+                            <option value="Portero">Portero</option>
+                            <option value="Defensa Central">Defensa Central</option>
+                            <option value="Defensa Central">Defensa Central</option>
+                            <option value="Defensa libre">Defensa libre</option>
+                            <option value="Medio Campo">Medio Campo</option>
+                            <option value="Medio Campo Central">Medio Campo Central</option>
+                            <option value="Medio Campo Central">Medio Campo Central</option>
+                            <option value="Medio Campo Ofensivo">Medio Campo Ofensivo</option>
+                            <option value="Medio Centro Ofensivo">Medio Centro Ofensivo</option>
+                            <option value="Segundo Delantero">Segundo Delantero</option>
+                            <option value="Delantero Inferior">Delantero Inferior</option>
+                            <option value="Delantero Central">Delantero Central</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-start p-2">
+                        <button class="btn btn-success m-2" type="submit" value="">Registrar</button>
+                        <a asp-page="/I-SPORT/Jugador" class="btn btn-secondary m-2" role="button">Cancelar</a>
+                    </div>
+                </form>
             </div>
-            <div>
-                <label>Fecha de nacimiento</label>
-                <input asp-for="Jugador.Fechanac" type="date" id="fechanac">
-            </div>
-            <div>
-                <label>Estatura</label>
-                <input asp-for="Jugador.Estatura" id="Estatura"  type="text" placeholder="Estatura en metros" />
-            </div>
-            <div>
-                <div class=" custom-file">
-                    <input type="file" asp-for="Foto" class="file-input" lang="es">
-                    <label class="custom-file-label" for="Logo">Elige tu foto</label>
-                    <input hidden asp-for="Jugador.Foto" />
-                </div>
-            </div>
-            <div>
-                <label asp-for="equipo.Id">Equipo</label>
-                <select asp-for="Jugador.EquipoId" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
-                    <option> seleccione su equipo </option>                    
-                </select>             
-            </div>
-            <div>
-                <label>Nacionalidad</label>
-                <input asp-for="Jugador.Pais" id="Pais" type="text" placeholder="Ingrese su pais" />
-            </div>
-            <div>
-                <label>Posicion</label>
-                <select asp-for="Jugador.posicion" >
-                    <option>Posicion</option>
-                    <option value="Portero">Portero</option>
-                    <option value="Defensa Central">Defensa Central</option>
-                    <option value="Defensa Central">Defensa Central</option>
-                    <option value="Defensa libre">Defensa libre</option>
-                    <option value="Medio Campo">Medio Campo</option>
-                    <option value="Medio Campo Central">Medio Campo Central</option>
-                    <option value="Medio Campo Central">Medio Campo Central</option>
-                    <option value="Medio Campo Ofensivo">Medio Campo Ofensivo</option>
-                    <option value="Medio Centro Ofensivo">Medio Centro Ofensivo</option>
-                    <option value="Segundo Delantero">Segundo Delantero</option>
-                    <option value="Delantero Inferior">Delantero Inferior</option>
-                    <option value="Delantero Central">Delantero Central</option>
-                </select>
-            </div>            
-            <div class="d-flex justify-content-end p-2">
-                <button type="submit" value="">Registrar</button>
-                <a asp-page="/I-SPORT/Jugador" class="btn btn-secondary m-2" role="button">Cancelar</a>
-            </div>
-        </form>
+            <div class="col-md-3"></div>
+        </div>
     </div>
 </body>
+
+
+
+
+
 
 

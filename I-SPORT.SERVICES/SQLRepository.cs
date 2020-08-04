@@ -51,6 +51,12 @@ namespace I_SPORT.SERVICES
             var entity = entities.Attach(obj);
             entity.State = EntityState.Modified;
             context.SaveChanges();
-        }    
+        }
+
+        public T sumGet(int id)
+        {
+            
+            return entities.SingleOrDefault(x => x.Id == id);
+        }
     }
 }

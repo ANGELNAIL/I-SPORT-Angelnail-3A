@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace I_SPORT.SERVICES.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20200716233105_second.")]
-    partial class second
+    [Migration("20200803232128_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -120,8 +120,8 @@ namespace I_SPORT.SERVICES.Migrations
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Pais")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Pais")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -129,12 +129,17 @@ namespace I_SPORT.SERVICES.Migrations
                     b.Property<DateTime?>("UpdatedAT")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("paisesId")
+                        .HasColumnType("int");
+
                     b.Property<string>("posicion")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EquipoId");
+
+                    b.HasIndex("paisesId");
 
                     b.ToTable("jugadores");
                 });
@@ -201,6 +206,30 @@ namespace I_SPORT.SERVICES.Migrations
                     b.ToTable("users");
                 });
 
+            modelBuilder.Entity("I_SPORT.MODEL.paises", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAT")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdatedAT")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("pais")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("paises");
+                });
+
             modelBuilder.Entity("I_SPORT.MODEL.Estadisticas", b =>
                 {
                     b.HasOne("I_SPORT.MODEL.Jugador", "jugador")
@@ -215,6 +244,10 @@ namespace I_SPORT.SERVICES.Migrations
                         .HasForeignKey("EquipoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("I_SPORT.MODEL.paises", "paises")
+                        .WithMany()
+                        .HasForeignKey("paisesId");
                 });
 
             modelBuilder.Entity("I_SPORT.MODEL.Partido", b =>

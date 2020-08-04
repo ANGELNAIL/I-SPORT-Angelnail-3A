@@ -3,27 +3,6 @@
 @{
     ViewData["Title"] = "Agregarequipo";
 }
-<h1>Agregarequipo</h1>
-<body>
-    <div>
-        <form class="container-fluid" method="post" enctype="multipart/form-data">
-            <div>
-                <label>Nombre del equipo</label>
-                <input asp-for="Equipo.Nombre" id="Nombre" type="text" placeholder="Nombre del Equipo" />
-            </div>
-            <div class=" custom-file">
-                <input type="file" asp-for="Logo" class="file-input" lang="es">
-                <label class="custom-file-label" for="Logo">Elige tu logo</label>
-                <input hidden asp-for="Equipo.logo" />
-            </div>
-            <div class="d-flex justify-content-start p-2">
-                <button class="btn btn-primary m-2" role="button">Guardar</button>
-                <a asp-page="/I-SPORT/Jugador" class="btn btn-secondary m-2" role="button">Cancelar</a>
-                <div class="text-danger" asp-validation-summary="All"></div>
-            </div>
-        </form>
-    </div>
-</body>
 @section Scripts{
     <script>
         $(document).ready(function () {
@@ -34,3 +13,33 @@
         });
     </script>
 }
+
+<h1 class="text-center">Registrar equipo</h1>
+<br />
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Nombre del equipo</label>
+                        <input class="form-control" asp-for="Equipo.Nombre" id="Nombre" type="text" placeholder="Nombre del Equipo" />
+                    </div>
+                    <div class=" custom-file">
+                        <input type="file" asp-for="Logo" class="custom-file-input form-control" lang="es">
+                        <label class="custom-file-label" for="Logo">Elige tu Logo</label>
+                        <input hidden asp-for="Equipo.logo" />
+                    </div>
+                    <div class="d-flex justify-content-start p-2">
+                        <button class="btn btn-success m-2" role="button">Guardar</button>
+                        <a asp-page="/I-SPORT/Jugador" class="btn btn-secondary m-2" role="button">Cancelar</a>
+                        <div class="text-danger" asp-validation-summary="All"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</body>
+

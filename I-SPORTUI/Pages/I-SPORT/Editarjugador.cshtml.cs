@@ -19,17 +19,22 @@ namespace I_SPORTUI.Pages.I_SPORT
         [BindProperty]
         public Jugador jugador { get; set; }
         [BindProperty]
+        public paises paises { get; set; }
+        [BindProperty]
         public Equipo equipo { get; set; }
         [BindProperty]
         public IFormFile Foto { get; set; }
-        public IWebHostEnvironment HostEnvironment { get; }        
+        public IWebHostEnvironment HostEnvironment { get; }
+        public readonly IRepository<paises> prepository;
         private readonly IRepository<Equipo> erepository;
         public IEnumerable<Equipo> Listaequipo { get; set; }
-        public EditarjugadorModel(IRepository <Jugador> repository, IRepository<Equipo> erepository, IWebHostEnvironment hostEnvironment)
+        public IEnumerable<paises> Listapaises { get; set; }
+        public EditarjugadorModel(IRepository<Jugador> repository, IRepository<Equipo> erepository, IRepository<paises> prepository, IWebHostEnvironment hostEnvironment)
         {
             this.repository = repository;
             HostEnvironment = hostEnvironment;
             this.Listaequipo = erepository.GetAll();
+            this.Listapaises = prepository.GetAll(); 
         }
         public IActionResult OnGet(int id)
         {

@@ -13,14 +13,31 @@ namespace I_SPORT.SERVICES.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAT = table.Column<DateTime>(nullable: true),
+                    CreatedAT = table.Column<DateTime>(nullable: false),
                     UpdatedAT = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<bool>(nullable: true),
-                    Nombre = table.Column<string>(nullable: true)
+                    Status = table.Column<bool>(nullable: false),
+                    Nombre = table.Column<string>(nullable: true),
+                    logo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_equipos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "paises",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedAT = table.Column<DateTime>(nullable: false),
+                    UpdatedAT = table.Column<DateTime>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
+                    pais = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_paises", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -29,9 +46,9 @@ namespace I_SPORT.SERVICES.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAT = table.Column<DateTime>(nullable: true),
+                    CreatedAT = table.Column<DateTime>(nullable: false),
                     UpdatedAT = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<bool>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
                     UserName = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true)
                 },
@@ -41,42 +58,14 @@ namespace I_SPORT.SERVICES.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "jugadores",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAT = table.Column<DateTime>(nullable: true),
-                    UpdatedAT = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<bool>(nullable: true),
-                    Nombre = table.Column<string>(nullable: true),
-                    Fechanac = table.Column<DateTime>(nullable: false),
-                    Estatura = table.Column<double>(nullable: false),
-                    Pais = table.Column<string>(nullable: true),
-                    posicion = table.Column<string>(nullable: true),
-                    Foto = table.Column<string>(nullable: true),
-                    EquipoId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_jugadores", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_jugadores_equipos_EquipoId",
-                        column: x => x.EquipoId,
-                        principalTable: "equipos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "partidos",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAT = table.Column<DateTime>(nullable: true),
+                    CreatedAT = table.Column<DateTime>(nullable: false),
                     UpdatedAT = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<bool>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
                     Fechapartido = table.Column<DateTime>(nullable: false),
                     Equipolocal = table.Column<int>(nullable: false),
                     Equipovisitante = table.Column<int>(nullable: false),
@@ -94,14 +83,49 @@ namespace I_SPORT.SERVICES.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "jugadores",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedAT = table.Column<DateTime>(nullable: false),
+                    UpdatedAT = table.Column<DateTime>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
+                    Nombre = table.Column<string>(nullable: true),
+                    Fechanac = table.Column<DateTime>(nullable: false),
+                    Estatura = table.Column<double>(nullable: false),
+                    posicion = table.Column<string>(nullable: true),
+                    Foto = table.Column<string>(nullable: true),
+                    EquipoId = table.Column<int>(nullable: false),
+                    Pais = table.Column<int>(nullable: false),
+                    paisesId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_jugadores", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_jugadores_equipos_EquipoId",
+                        column: x => x.EquipoId,
+                        principalTable: "equipos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_jugadores_paises_paisesId",
+                        column: x => x.paisesId,
+                        principalTable: "paises",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "estadisticas",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAT = table.Column<DateTime>(nullable: true),
+                    CreatedAT = table.Column<DateTime>(nullable: false),
                     UpdatedAT = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<bool>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
                     Goles = table.Column<int>(nullable: false),
                     Autogoles = table.Column<int>(nullable: false),
                     TRojas = table.Column<int>(nullable: false),
@@ -133,6 +157,11 @@ namespace I_SPORT.SERVICES.Migrations
                 column: "EquipoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_jugadores_paisesId",
+                table: "jugadores",
+                column: "paisesId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_partidos_equipoId",
                 table: "partidos",
                 column: "equipoId");
@@ -154,6 +183,9 @@ namespace I_SPORT.SERVICES.Migrations
 
             migrationBuilder.DropTable(
                 name: "equipos");
+
+            migrationBuilder.DropTable(
+                name: "paises");
         }
     }
 }

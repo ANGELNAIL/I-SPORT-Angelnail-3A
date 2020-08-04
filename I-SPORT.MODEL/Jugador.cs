@@ -14,9 +14,7 @@ namespace I_SPORT.MODEL
         [Display(Name = "Fecha de naciemto")]
         public DateTime Fechanac { get; set; }
         [Display(Name ="Estatura", Prompt = "Estatura en Metros")]
-        public double Estatura { get; set; }
-        [Display(Name = "Pais")]
-        public string Pais { get; set; }
+        public double Estatura { get; set; }       
         [Display(Name = "Posicion")]
         public string posicion { get; set; }
         [Display(Name = "Foto")]
@@ -24,5 +22,9 @@ namespace I_SPORT.MODEL
         //asociaciones
         public int EquipoId { get; set; }          
         public Equipo Equipo { get; set; }
+
+        [Display(Name = "Pais")]
+        public int Pais { get; set; }
+        public paises paises { get; set; }
     }
 }
