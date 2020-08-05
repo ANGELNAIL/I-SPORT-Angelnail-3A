@@ -55,7 +55,7 @@ namespace I_SPORTUI.Pages.I_SPORT
             }
             var id = repository.Insert(Jugador);
 
-            return RedirectToPage($"/I-SPORT/Verequipos");
+            return RedirectToPage($"/I-SPORT/Ficha_jugador");
         }
 
         private string ProcessUploadFile()

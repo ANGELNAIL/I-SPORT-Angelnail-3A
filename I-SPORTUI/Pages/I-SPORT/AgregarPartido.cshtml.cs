@@ -30,7 +30,7 @@ namespace I_SPORTUI.Pages.I_SPORT
             if (!ModelState.IsValid)
                 return Page();
             var id = repository.Insert(partido);         
-            return RedirectToPage("/I-SPORT/Index");
+            return RedirectToPage("/I-SPORT/Verpartido");
         }
         public void OnGet()
         {

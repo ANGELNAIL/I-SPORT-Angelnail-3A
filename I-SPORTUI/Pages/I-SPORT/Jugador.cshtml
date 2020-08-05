@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <label asp-for="pais.Id">Pais</label>
                         <select class="form-control" asp-for="Jugador.Pais" asp-items="@(new SelectList(Model.Listapaises, "Id","pais"))">
-                            <option> seleccione su equipo </option>
+                            <option> seleccione su Pais </option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -70,13 +70,14 @@
                     </div>
                     <div class="d-flex justify-content-start p-2">
                         <button class="btn btn-success m-2" type="submit" value="">Registrar</button>
-                        <a asp-page="/I-SPORT/Jugador" class="btn btn-secondary m-2" role="button">Cancelar</a>
+                        <a asp-page="/I-SPORT/Ficha_jugador" class="btn btn-secondary m-2" role="button">Cancelar</a>
                     </div>
                 </form>
             </div>
             <div class="col-md-3"></div>
         </div>
     </div>
+
 </body>
 
 

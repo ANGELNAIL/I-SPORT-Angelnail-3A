@@ -18,18 +18,24 @@
             <div class="card-body">
                 <div><label>Estatura: @item.Estatura M</label></div>
                 <div><label>Fecha de nacimiento: @item.Fechanac.ToShortDateString()</label></div>
-                <div><label>Nacionalidad: @item.Pais</label></div>
+
                 <div><label>Posicion: @item.posicion</label></div>
                 @foreach (var itm in Model.equipos)
                 {@if (item.EquipoId == itm.Id)
                     {
+                        @foreach (var nac in Model.paises)
+                        {@if (item.Pais == nac.Id)
+                            {
+                                <div><label>Nacionalidad: @nac.pais</label></div>
+                            }
+                    }
+
                         <div><label>Equipo: @itm.Nombre</label></div>
                     }
             }
             </div>
             <div class="card-footer text-center">
-                <a asp-page="/I-SPORT/Editarjugador" asp-route-Id="@item.Id" class="btn btn-info m-1">Editar</a>
-                <a asp-page="/I-SPORT/Estadistica" asp-route-Id="@item.Id" class="btn btn-success m-1">Mostar estadística</a>
+                <a asp-page="/I-SPORT/Editarjugador" asp-route-Id="@item.Id" class="btn btn-info m-1">Editar</a>                
             </div>
         </div>
     }

@@ -14,14 +14,18 @@ namespace I_SPORTUI.Pages.I_SPORT
         
         private readonly IRepository<Jugador> repository;
         private readonly IRepository<Equipo> erepository;
+        private readonly IRepository<paises> prepository;
         public IEnumerable<Jugador> jugadores {get; set; }
         public IEnumerable<Equipo> equipos { get; set; }        
         public Jugador jugador { get; private set; }
+        public IEnumerable<paises> paises { get; set; }
+        public paises pais { get; set; }
         public Equipo equipo { get; private set; }
-        public Ficha_jugadorModel(IRepository<Jugador> repository, IRepository<Equipo>erepository)
+        public Ficha_jugadorModel(IRepository<Jugador> repository, IRepository<Equipo>erepository, IRepository<paises> prepository)
         {
             this.repository = repository;
             this.erepository = erepository;
+            this.prepository = prepository;
         }
         public IActionResult OnPost(Jugador jugador)
         {
@@ -36,6 +40,7 @@ namespace I_SPORTUI.Pages.I_SPORT
         {
             jugadores = repository.GetAll();
             equipos = erepository.GetAll();
+            paises = prepository.GetAll();
             return Page();
         }       
     }

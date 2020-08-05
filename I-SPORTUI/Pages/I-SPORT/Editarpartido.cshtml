@@ -24,17 +24,14 @@
                             <select class="form-control" asp-for="partido.Equipovisitante" asp-items="@(new SelectList(Model.Listaequipo, "Id","Nombre"))">
                                 <option> Seleccione Equipo Visitante </option>
                             </select>
-                        </div>
-                        <div>
-                            <p>Hora partido  <input  class="form-control" asp-for="partido.Fechapartido" type="time" name="eta"></p>
-                        </div>
+                        </div>                       
 
                         <div>
                             <label asp-for="partido.Id" hidden>ID</label>
                             <input  class="form-control" asp-for="partido.Id" id="txb_idJugador" hidden  type="text" placeholder="Estatura en metros" />
                         </div>
                         <div class="d-flex justify-content-lg-start p-2">
-                            <<button class="btn btn-success m-2" type="submit" name="button" value="Editar">Editar</button>
+                            <button class="btn btn-success m-2" type="submit" name="button" value="Editar">Editar</button>
                             <button class="btn btn-danger m-2" type="submit" name="button" value="Eliminar">Eliminar</button>
                             <a asp-page="/I-SPORT/Verpartido" class="btn btn-secondary m-2" role="button">Cancelar</a>
                         </div>
