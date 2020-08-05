@@ -10,6 +10,7 @@ namespace I_SPORT.SERVICES
         public T Get(int id);
         public int Insert(T obj);
         public void Update(T obj);
-        public void Delete(T obj);       
+        public void Delete(T obj);
+        public List<Estadisticas> Get2(int id);
     }
 }

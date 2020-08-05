@@ -52,11 +52,9 @@ namespace I_SPORT.SERVICES
             entity.State = EntityState.Modified;
             context.SaveChanges();
         }
-
-        public T sumGet(int id)
+        public List<Estadisticas> Get2(int id)
         {
-            
-            return entities.SingleOrDefault(x => x.Id == id);
+            return context.estadisticas.Where(x => x.idjugador == id).ToList();
         }
     }
 }

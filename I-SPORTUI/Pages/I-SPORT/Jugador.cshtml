@@ -33,12 +33,10 @@
                         <label>Estatura</label>
                         <input class="form-control" asp-for="Jugador.Estatura" id="Estatura" type="text" placeholder="Estatura en metros" />
                     </div>
-                    <div class="form-group">
-                        <div class=" custom-file">
-                            <input class="form-control" type="file" asp-for="Foto" class="custom-file-input form-control" lang="es">
-                            <label class="custom-file-label" for="Logo">Elige tu foto</label>
-                            <input hidden asp-for="Jugador.Foto" />
-                        </div>
+                    <div class=" custom-file">
+                        <input type="file" asp-for="Foto" class="custom-file-input form-control" lang="es">
+                        <label class="custom-file-label" for="Foto">Elige tu Foto</label>
+                        <input hidden asp-for="Jugador.Foto" />
                     </div>
                     <div class="form-group">
                         <label asp-for="equipo.Id">Equipo</label>
@@ -54,7 +52,7 @@
                     </div>
                     <div class="form-group">
                         <label>Posicion</label>
-                        <select  class="form-control"asp-for="Jugador.posicion">
+                        <select class="form-control" asp-for="Jugador.posicion">
                             <option>Posicion</option>
                             <option value="Portero">Portero</option>
                             <option value="Defensa Central">Defensa Central</option>

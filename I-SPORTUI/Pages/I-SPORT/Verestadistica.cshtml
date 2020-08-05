@@ -6,21 +6,22 @@
 
 <h1 class="text-center">Estadística  por partido</h1>
 <br />
-@foreach (var item in Model.Estadisticas)
-{
-    @foreach (var tm in Model.Jugadores)
-        @if (item.idjugador == tm.Id)
-        {<table class="table table-sm table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">Jugador</th>
-                        <th scope="col">Goles</th>
-                        <th scope="col">Autogoles</th>
-                        <th scope="col">Tarjetas Amarillas</th>
-                        <th scope="col">Tarjetas Rojas</th>
-                        <th scope="col">Tiempo Jugado</th>
-                    </tr>
-                </thead>
+<table class="table table-sm table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Jugador</th>
+            <th scope="col">Goles</th>
+            <th scope="col">Autogoles</th>
+            <th scope="col">Tarjetas Amarillas</th>
+            <th scope="col">Tarjetas Rojas</th>
+            <th scope="col">Tiempo Jugado</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Estadisticas)
+    {
+        @foreach (var tm in Model.Jugadores)
+            @if (item.idjugador == tm.Id)
+            {
                 <tbody>
                     <tr>
                         <td>@Html.DisplayFor(m => tm.Nombre)</td>
@@ -31,9 +32,9 @@
                         <td>@Html.DisplayFor(m => item.Tjugado) min</td>
                     </tr>
                 </tbody>
-            </table>
+            }
         }
-    }
+</table>
 
 
 

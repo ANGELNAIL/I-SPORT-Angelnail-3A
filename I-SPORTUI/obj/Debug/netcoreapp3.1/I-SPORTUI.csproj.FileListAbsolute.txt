@@ -442,3 +442,4 @@ C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreap
 C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreapp3.1\Razor\Pages\I-SPORT\Editarpartido.cshtml.g.cs
 C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreapp3.1\Razor\Pages\I-SPORT\Agregarestadistica.cshtml.g.cs
 C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreapp3.1\Razor\Pages\I-SPORT\Verestadistica.cshtml.g.cs
+C:\Users\ANGEL NAIL\Documents\I-SPORT-Angelnail-3A\I-SPORTUI\obj\Debug\netcoreapp3.1\Razor\Pages\I-SPORT\Reporte.cshtml.g.cs
