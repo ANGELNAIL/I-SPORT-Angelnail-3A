@@ -91,9 +91,28 @@
             }
         </tbody>
     </table>
-</div>
-@foreach (var res in Model.Estadisticas)
-{
-    <a>total de goles  </a>
-}
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Resultados</th>
+                <th scope="col">Total Goles</th>
+                <th scope="col">Total Autogoles</th>
+                <th scope="col">Tarjetas Amarillas</th>
+                <th scope="col">Tarjetas Rojas</th>
+                <th scope="col">Tiempo Jugado</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>@Model.tgoles</td>
+                <td>@Model.tautogoles</td>
+                <td>@Model.tamarillas</td>
+                <td>@Model.trojas</td>
+                <td>@Model.tjugado min</td>
+            </tr>
+        </tbody>
+    </table>
+</div>  
 <button onclick="javascript:demoFromHTML();">Descargar PDF</button>

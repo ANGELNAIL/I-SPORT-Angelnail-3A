@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace I_SPORT.SERVICES
 {
@@ -56,9 +57,25 @@ namespace I_SPORT.SERVICES
         {
             return context.estadisticas.Where(x => x.idjugador == id).ToList();
         }
-        public int Getsum(int id)
+        public int Getsumg(int id)
         {
             return context.estadisticas.Where(x => x.idjugador == id).Sum(x => x.Goles);
         }
+        public int Getsumag(int id)
+        {
+            return context.estadisticas.Where(x => x.idjugador == id).Sum(x => x.Autogoles);
+        }
+        public int Getsumta(int id)
+        {
+            return context.estadisticas.Where(x => x.idjugador == id).Sum(x => x.TAmarillas);
+        }
+        public int Getsumtr(int id)
+        {
+            return context.estadisticas.Where(x => x.idjugador == id).Sum(x => x.TRojas);
+        }
+        public int Getsumtj(int id)
+        {
+            return context.estadisticas.Where(x => x.idjugador == id).Sum(x => x.Tjugado);
+        }        
     }
 }

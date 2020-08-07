@@ -20,6 +20,12 @@ namespace I_SPORTUI.Pages.I_SPORT
         public Jugador jugador { get; private set; }
         public Estadisticas estadisticas { get; private set; }
         public Partido partido { get; private set; }
+        public int tgoles { get; set; }
+        public int trojas { get; set; }
+        public int tamarillas { get; set; }
+        public int tjugado { get; set; }
+        public int tautogoles { get; set; }
+
         public EstadisticaModel (IRepository<Jugador> jrepository, IRepository<Estadisticas> repository, IRepository<Partido> prepository)
         {
             this.Repository = repository;
@@ -29,10 +35,14 @@ namespace I_SPORTUI.Pages.I_SPORT
         public IActionResult OnGet(int Id)
         {
             
-            Estadisticas = Repository.Get2(Id);
-             int Estadistica = Repository.Getsum(Id);
+            Estadisticas = Repository.Get2(Id);            
             Jugadores = jrepository.GetAll();
             partidos = prepository.GetAll();
+            tautogoles = Repository.Getsumag(Id);
+            tamarillas = Repository.Getsumta(Id);
+            trojas = Repository.Getsumtr(Id);
+            tjugado = Repository.Getsumtj(Id);
+            tgoles = Repository.Getsumg(Id);
             return Page();
         }
     }
