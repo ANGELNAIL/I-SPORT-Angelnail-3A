@@ -3,32 +3,97 @@
 @{
     ViewData["Title"] = "Estadistica";
 }
-<input asp-for="jugador.Nombre" id="Nombre" class="form-control" type="text" placeholder="nombre del jugador" />
-<input asp-for="jugador.Id" id="Nombre" class="form-control" type="text" placeholder="nombre del jugador" />
 
-<table class="table table-sm table-dark">
-    <thead>
-        <tr>
-            <th scope="col">Goles</th>
-            <th scope="col">Autogoles</th>
-            <th scope="col">Tarjetas Amarillas</th>
-            <th scope="col">Tarjetas Rojas</th>
-            <th scope="col">Tiempo Jugado</th>
-        </tr>
-    </thead>
-    @foreach (var item in Model.estadisticas2)
-    {
+<script src="~/js/jspdf.debug.js"></script>
+@section Scripts{
+    <script>
+        function demoFromHTML() {
+            var pdf = new jsPDF('letter');
+            // source can be HTML-formatted string, or a reference
+            // to an actual DOM element from which the text will be scraped.
+            source = $('#reporte')[0];
 
-        <tbody>
+            // we support special element handlers. Register them with jQuery-style
+            // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+            // There is no support for any other type of selectors
+            // (class, of compound) at this time.
+            specialElementHandlers = {
+                // element with id of "bypass" - jQuery style selector
+                '#bypassme': function (element, renderer) {
+                    // true = "handled elsewhere, bypass text extraction"
+                    return true
+                }
+            };
+            margins = {
+                top: 10,
+                bottom: 10,
+                left: 5,
+                width: 0
+            };
+            // all coords and widths are in jsPDF instance's declared units
+            // 'inches' in this case
+            pdf.fromHTML(
+                source, // HTML string or DOM elem ref.
+                margins.left, // x coord
+                margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+
+                function (dispose) {
+                    // dispose: object with X, Y of the last line add to the PDF
+                    //          this allow the insertion of new lines after html
+                    pdf.save('Reporte jugador.pdf');
+                }, margins);
+        }
+    </script>
+}
+
+<h1 class="text-center">Estadística</h1>
+<br />
+<div id="reporte">
+    <table class="table  table-dark">
+        <thead>
             <tr>
-
-                <td>@Html.DisplayFor(m => item.Goles)</td>
-                <td>@Html.DisplayFor(m => item.Autogoles)</td>
-                <td>@Html.DisplayFor(m => item.TAmarillas)</td>
-                <td>@Html.DisplayFor(m => item.TRojas)</td>
-                <td>@Html.DisplayFor(m => item.Tjugado) min</td>
+                <th scope="col">Jugador</th>
+                <th scope="col">Goles</th>
+                <th scope="col">Autogoles</th>
+                <th scope="col">Tarjetas Amarillas</th>
+                <th scope="col">Tarjetas Rojas</th>
+                <th scope="col">Tiempo Jugado</th>
+                <th scope="col">Fecha y Hora partido</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Estadisticas)
+            {
+                @foreach (var tm in Model.Jugadores)
+                {
+                    @if (item.idjugador == tm.Id)
+                    {
+                        @foreach (var part in Model.partidos)
+                        {
+                            @if (item.Idpartido == part.Id)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(m => tm.Nombre)</td>
+                                    <td>@Html.DisplayFor(m => item.Goles)</td>
+                                    <td>@Html.DisplayFor(m => item.Autogoles)</td>
+                                    <td>@Html.DisplayFor(m => item.TAmarillas)</td>
+                                    <td>@Html.DisplayFor(m => item.TRojas)</td>
+                                    <td>@Html.DisplayFor(m => item.Tjugado) min</td>
+                                    <td>@Html.DisplayFor(m => part.Fechapartido)</td>
+                                </tr>
+                            }
+                        }
+                    }
+                }
+            }
         </tbody>
-
-    }
-</table>
+    </table>
+</div>
+@foreach (var res in Model.Estadisticas)
+{
+    <a>total de goles  </a>
+}
+<button onclick="javascript:demoFromHTML();">Descargar PDF</button>

@@ -12,9 +12,15 @@
                     <h1>Registrar Estadística</h1>
                     <br />
                     <div class="form-group">
-                        <label asp-for="jugador.Id">Equipo</label>
+                        <label asp-for="jugador.Id">Jugador</label>
                         <select class="form-control" asp-for="estadisticas.idjugador" asp-items="@(new SelectList(Model.Listajugador, "Id","Nombre"))">
                             <option> seleccione jugador </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="partido">Fecha y Hora del partido</label>
+                        <select class="form-control" asp-for="estadisticas.Idpartido" asp-items="@(new SelectList(Model.Listapartido, "Id","Fechapartido"))">
+                            <option> seleccione Fecha y Hora del partido </option>
                         </select>
                     </div>
                     <div>

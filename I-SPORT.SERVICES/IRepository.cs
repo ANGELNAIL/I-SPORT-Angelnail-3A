@@ -11,6 +11,7 @@ namespace I_SPORT.SERVICES
         public int Insert(T obj);
         public void Update(T obj);
         public void Delete(T obj);
+        public int Getsum(int id);
         public List<Estadisticas> Get2(int id);
     }
 }

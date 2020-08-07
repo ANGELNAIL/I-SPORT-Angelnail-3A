@@ -60,25 +60,37 @@
                 <th scope="col">Tarjetas Amarillas</th>
                 <th scope="col">Tarjetas Rojas</th>
                 <th scope="col">Tiempo Jugado</th>
+                <th scope="col">Fecha y Hora partido</th>
             </tr>
         </thead>
         @foreach (var item in Model.Estadisticas)
-        {
+         {
             @foreach (var tm in Model.Jugadores)
+             {
                 @if (item.idjugador == tm.Id)
-                {
-                    <tbody>
-                        <tr>
-                            <td>@Html.DisplayFor(m => tm.Nombre)</td>
-                            <td>@Html.DisplayFor(m => item.Goles)</td>
-                            <td>@Html.DisplayFor(m => item.Autogoles)</td>
-                            <td>@Html.DisplayFor(m => item.TAmarillas)</td>
-                            <td>@Html.DisplayFor(m => item.TRojas)</td>
-                            <td>@Html.DisplayFor(m => item.Tjugado) min</td>
-                        </tr>
-                    </tbody>
-                }
-            }
+                 {
+                    @foreach (var part in Model.partidos)
+                     {
+                        @if (item.Idpartido == part.Id)
+                         {
+                            <tbody>
+                                <tr>
+                                    <td>@Html.DisplayFor(m => tm.Nombre)</td>
+                                    <td>@Html.DisplayFor(m => item.Goles)</td>
+                                    <td>@Html.DisplayFor(m => item.Autogoles)</td>
+                                    <td>@Html.DisplayFor(m => item.TAmarillas)</td>
+                                    <td>@Html.DisplayFor(m => item.TRojas)</td>
+                                    <td>@Html.DisplayFor(m => item.Tjugado) min</td>
+                                    <td>@Html.DisplayFor(m => part.Fechapartido)</td>
+                                </tr>
+                            </tbody>
+
+                         }
+                     }
+                 }
+
+             }
+         }
     </table>
 </div>
 <button onclick="javascript:demoFromHTML();">Descargar PDF</button>

@@ -11,36 +11,28 @@ namespace I_SPORTUI.Pages.I_SPORT
 {
     public class EstadisticaModel : PageModel
     {
-        public readonly IRepository<Jugador> Repository;
-        public readonly IRepository<Equipo> eqrepository;
-        public readonly IRepository<Estadisticas> estrepository;
-        public readonly IRepository<paises> prepository;
-        public IEnumerable<Estadisticas> estadisticas2;
-        public IEnumerable<Equipo> equipos;
-        public IEnumerable<Jugador> jugadores;
-        public IEnumerable<paises> paises;
-        [BindProperty]
-        public Jugador jugador { get; set; }
-        [BindProperty]
-        public Equipo equpo { get; set; }
-        [BindProperty]
-        public Estadisticas estadisticas { get; set; }
-        [BindProperty]
-        public paises pais { get; set; }
-        public EstadisticaModel(IRepository<Jugador> repository, IRepository<Equipo> eqrepository, IRepository<Estadisticas> estrepository, IRepository<paises> prepository)
+        public readonly IRepository<Jugador> jrepository;
+        public readonly IRepository<Estadisticas> Repository;
+        public readonly IRepository<Partido> prepository;
+        public IEnumerable<Jugador> Jugadores { get; set; }
+        public IEnumerable<Estadisticas> Estadisticas { get; set; }
+        public IEnumerable<Partido> partidos { get; set; }
+        public Jugador jugador { get; private set; }
+        public Estadisticas estadisticas { get; private set; }
+        public Partido partido { get; private set; }
+        public EstadisticaModel (IRepository<Jugador> jrepository, IRepository<Estadisticas> repository, IRepository<Partido> prepository)
         {
             this.Repository = repository;
-            this.eqrepository = eqrepository;
-            this.estrepository = estrepository;
+            this.jrepository = jrepository;
             this.prepository = prepository;
         }
         public IActionResult OnGet(int Id)
         {
-            jugador = Repository.Get(Id);
-            if (jugador.Id == 0)
-                return RedirectToPage("/I-SPORT/Ficha_jugador");
-
-            estadisticas2 = estrepository.Get2(Id);
+            
+            Estadisticas = Repository.Get2(Id);
+             int Estadistica = Repository.Getsum(Id);
+            Jugadores = jrepository.GetAll();
+            partidos = prepository.GetAll();
             return Page();
         }
     }

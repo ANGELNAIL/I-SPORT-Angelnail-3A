@@ -13,19 +13,24 @@ namespace I_SPORTUI.Pages.I_SPORT
     {
         public readonly IRepository<Jugador> jrepository;
         public readonly IRepository<Estadisticas> Repository;
+        public readonly IRepository<Partido> prepository;
         public IEnumerable<Jugador> Jugadores { get; set; }
         public IEnumerable<Estadisticas> Estadisticas { get; set; }
+        public IEnumerable<Partido> partidos { get; set; }
         public Jugador jugador { get; private set; }
-        public Estadisticas estadisticas { get; private set; }        
-        public VerestadisticaModel(IRepository<Jugador> jrepository, IRepository<Estadisticas> repository)
+        public Estadisticas estadisticas { get; private set; }     
+        public Partido partido { get; private set; } 
+        public VerestadisticaModel(IRepository<Jugador> jrepository, IRepository<Estadisticas> repository, IRepository<Partido> prepository)
         {
             this.Repository = repository;
             this.jrepository = jrepository;
+            this.prepository = prepository;
         }       
         public IActionResult OnGet(int Id)
         {
             Estadisticas = Repository.GetAll();
             Jugadores = jrepository.GetAll();
+            partidos = prepository.GetAll();
             return Page();
         }
     }

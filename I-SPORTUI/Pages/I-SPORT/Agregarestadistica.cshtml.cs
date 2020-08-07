@@ -14,14 +14,18 @@ namespace I_SPORTUI.Pages.I_SPORT
         [BindProperty]
         public Jugador jugador { get; set; }
         [BindProperty]
+        public Partido partido { get; set; }
         public Estadisticas estadisticas { get; set; }
         public IRepository<Jugador> jrepository;
         public IRepository<Estadisticas> Repository;
+        public IRepository<Partido> prepository;
         public IEnumerable<Jugador> Listajugador { get; set; }
-        public AgregarestadisticaModel(IRepository<Jugador> jrepository, IRepository<Estadisticas> repository)
+        public IEnumerable<Partido> Listapartido { get; set; }
+        public AgregarestadisticaModel(IRepository<Jugador> jrepository, IRepository<Estadisticas> repository, IRepository<Partido> prepository)
         {
             Repository = repository;            
-            this.Listajugador = jrepository.GetAll();            
+            this.Listajugador = jrepository.GetAll();
+            this.Listapartido = prepository.GetAll();
         }
         public IActionResult OnPost (Estadisticas estadisticas)
         {

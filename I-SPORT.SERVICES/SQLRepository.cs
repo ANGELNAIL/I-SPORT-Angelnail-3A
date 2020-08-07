@@ -56,5 +56,9 @@ namespace I_SPORT.SERVICES
         {
             return context.estadisticas.Where(x => x.idjugador == id).ToList();
         }
+        public int Getsum(int id)
+        {
+            return context.estadisticas.Where(x => x.idjugador == id).Sum(x => x.Goles);
+        }
     }
 }
